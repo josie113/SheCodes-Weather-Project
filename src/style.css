@@ -8,8 +8,15 @@
   background: #71a0a5;
 }
 .today,
+.today-details,
+.daily {
+  padding: 5px;
+  margin: 30px auto;
+}
 .daily {
   background-color: #acc6aa;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 h1 {
   font-weight: bold;
