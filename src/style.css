@@ -1,4 +1,9 @@
-.container {
+.weather-app {
+  max-width: 950px;
+  padding: 10px;
+  margin: 30px auto;
+  border: 1px solid gray;
+  border-radius: 5px;
   font-family: "Dosis", sans-serif;
   background: #71a0a5;
 }

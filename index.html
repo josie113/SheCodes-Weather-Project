@@ -21,89 +21,86 @@
     <title>SheCodes Plus Weather Project</title>
   </head>
   <body>
-    <div class="container border mt-3 rounded">
-      <div class="row text-center">
-        <div class="col-3">Seattle</div>
-        <div class="col-3">Los Angeles</div>
-        <div class="col-3">New York City</div>
-        <div class="col-3">Miami</div>
-      </div>
-      <div class="row mt-2 mb-2">
-        <div class="col-md-12 text-center">
-          <form id="search-form">
-            <input
-              type="search"
-              placeholder="Search for your city..."
-              id="search-text-input"
-            />
-            <input type="submit" value="search" />
-          </form>
+    <div class="container">
+      <div class="weather-app">
+        <div class="row text-center">
+          <div class="col-3">Seattle</div>
+          <div class="col-3">Los Angeles</div>
+          <div class="col-3">New York City</div>
+          <div class="col-3">Miami</div>
         </div>
-      </div>
-      <div class="row gx-1 mb-3" id="today">
-        <div class="col-6 p-2 mr-2 border rounded text-center">
-          <h3 id="city">
-            Portland, OR
-          </h3>
-          <h4>
-            Monday
-          </h4>
-          <h1 id="current-temp">44°F</h1>
-          
-          <h2 id="description">Fog</h2>
-          <h5>High of 46°<br />Low of 35°<br />0%</h5>
+        <div class="row mt-2 mb-2">
+          <div class="col-md-12 text-center">
+            <form id="search-form">
+              <input
+                type="search"
+                placeholder="Search for your city..."
+                id="search-text-input"
+              />
+              <input type="submit" value="search" />
+            </form>
+          </div>
         </div>
-        <div class="col-6 p-2 border rounded" id="daily">
-          <section class="tuesday">
-            <div class="row">
-              <div class="col-2 text-left">
-                <span class="tues">T</span>
+        <div class="row gx-1 mb-3" id="today">
+          <div class="col-6 p-2 mr-2 border rounded text-center">
+            <h3 id="city">Portland, OR</h3>
+            <h4>Monday</h4>
+            <h1 id="current-temp">44°F</h1>
+            <h2 id="description">Fog</h2>
+            <h5>High of 46°<br />Low of 35°<br />0%</h5>
+          </div>
+          <div class="col-6 p-2 border rounded" id="daily">
+            <section class="tuesday">
+              <div class="row">
+                <div class="col-2 text-left">
+                  <span class="tues">T</span>
+                </div>
+                <div class="col-4 text-right">
+                  <span class="day-2">48° fog</span>
+                </div>
               </div>
-              <div class="col-4 text-right">
-                <span class="day-2">48° fog</span>
+            </section>
+            <section class="wednesday">
+              <div class="row">
+                <div class="col-2 text-left"><span class="wed">W</span></div>
+                <div class="col-4 text-right">
+                  <span class="day-3">49° overcast</span>
+                </div>
               </div>
-            </div>
-          </section>
-          <section class="wednesday">
-            <div class="row">
-              <div class="col-2 text-left"><span class="wed">W</span></div>
-              <div class="col-4 text-right">
-                <span class="day-3">49° overcast</span>
+            </section>
+            <section class="thursday">
+              <div class="row">
+                <div class="col-2 text-left"><span class="thurs">T</span></div>
+                <div class="col-4 text-right">
+                  <span class="day-4">51° sunny</span>
+                </div>
               </div>
-            </div>
-          </section>
-          <section class="thursday">
-            <div class="row">
-              <div class="col-2 text-left"><span class="thurs">T</span></div>
-              <div class="col-4 text-right">
-                <span class="day-4">51° sunny</span>
+            </section>
+            <section class="friday">
+              <div class="row">
+                <div class="col-2 text-left"><span class="fri">F</span></div>
+                <div class="col-4 text-right">
+                  <span class="day-5">49° overcast</span>
+                </div>
               </div>
-            </div>
-          </section>
-          <section class="friday">
-            <div class="row">
-              <div class="col-2 text-left"><span class="fri">F</span></div>
-              <div class="col-4 text-right">
-                <span class="day-5">49° overcast</span>
+            </section>
+            <section class="saturday">
+              <div class="row">
+                <div class="col-2 text-left"><span class="sat">S</span></div>
+                <div class="col-4 text-right">
+                  <span class="day-6">50° overcast</span>
+                </div>
               </div>
-            </div>
-          </section>
-          <section class="saturday">
-            <div class="row">
-              <div class="col-2 text-left"><span class="sat">S</span></div>
-              <div class="col-4 text-right">
-                <span class="day-6">50° overcast</span>
+            </section>
+            <section class="sunday">
+              <div class="row">
+                <div class="col-2 text-left"><span class="sun">S</span></div>
+                <div class="col-4 text-right">
+                  <span class="day-7">47° rain</span>
+                </div>
               </div>
-            </div>
-          </section>
-          <section class="sunday">
-            <div class="row">
-              <div class="col-2 text-left"><span class="sun">S</span></div>
-              <div class="col-4 text-right">
-                <span class="day-7">47° rain</span>
-              </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </div>
     </div>
