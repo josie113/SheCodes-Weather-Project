@@ -1,44 +1,42 @@
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hour = [now.getHours()];
-if (hour < 10) {
-  hour = `0${hour}`;
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
-let minute = [now.getMinutes()];
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-
-let h4 = document.querySelector("h4");
-h4.innerHTML = `${day} ${hour}:${minute}`;
 
 function displayWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
-
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].description;
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innnerHTML = Math.round(response.data.main.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
-function search(event) {
-  event.preventDefault();
-  let searchTextInput = document.querySelector("#search-text-input");
-  let city = searchTextInput.value;
-  let apiKey = "774e0d8fffbeeedfdccb46cff718bbcf";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-  axios.get(apiUrl).then(displayWeather);
-}
+let apiKey = "774e0d8fffbeeedfdccb46cff718bbcf";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Portland&appid=${apiKey}&units=imperial`;
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+axios.get(apiUrl).then(displayWeather);
