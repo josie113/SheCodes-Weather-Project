@@ -32,7 +32,7 @@ function displayWeather(response) {
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
-  windElement.innnerHTML = Math.round(response.data.main.wind.speed);
+  windElement.innerHTML = Math.round(response.data.main.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
