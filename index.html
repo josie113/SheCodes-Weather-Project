@@ -53,13 +53,23 @@
                 <a id="fahrenheit" href="#">F</a> |
                 <a id="celsius" href="#">C</a>
               </h6>
-              <h2 id="description">Fog</h2>
-              <h3>High of 46°<br />Low of 35°<br />0%</h3>
+              <div class="clearfix weather-temperature">
+                <img src="" alt="clear" class="icon" id="icon" />
+                <h2 id="description">Fog</h2>
+              </div>
             </div>
           </div>
           <div class="col-3 p-2 mr-2 text-center">
             <div class="today-details">
               <ul>
+                <li>
+                  High:
+                  <span id="max-temp"></span>%
+                </li>
+                <li>
+                  Low:
+                  <span id="min-temp"></span>%
+                </li>
                 <li>
                   Humidity:
                   <span id="humidity"></span>%
