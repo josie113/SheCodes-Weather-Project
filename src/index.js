@@ -47,8 +47,20 @@ function displayWeather(response) {
   minTempElement.innerHTML = Math.round(response.data.main.temp_min);
 }
 
-let apiKey = "774e0d8fffbeeedfdccb46cff718bbcf";
-let city = "Portland";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+function search(city) {
+  let apiKey = "774e0d8fffbeeedfdccb46cff718bbcf";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
-axios.get(apiUrl).then(displayWeather);
+  axios.get(apiUrl).then(displayWeather);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("Portland");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
