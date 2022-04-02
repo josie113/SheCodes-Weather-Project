@@ -21,30 +21,46 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#daily-forecast");
 
   let forecastHTML = `<div class="row gx-1 mb-3">`;
-  let days = ["SU", "M", "T", "W", "TH", "F"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="col-4 p-2" id="daily-forecast">
             <div class="daily">
               <section class="tuesday">
                 <div class="row">
                   <div class="col-2 text-left">
-                    <span class="tues">${day}</span>
+                    <span class="tues">${formatDay(forecastDay.dt)}</span>
                   </div>
                   <div class="col-10 text-right">
                     <span class="day-2">
                       <img
-                        src="http://openweathermap.org/img/wn/50d@2x.png"
+                        src="http://openweathermap.org/img/wn/${
+                          forecastDay.weather[0].icon
+                        }@2x.png"
                         alt=""
                         width="50"
-                      /><span class="tues-high" id="tues-high">48°</span> |
-                      <span class="tues-low" id="tues-low">42°</span>
+                      /><span class="tues-high" id="tues-high">${Math.round(
+                        forecastDay.temp.max
+                      )}°</span> |
+                      <span class="tues-low" id="tues-low">${Math.round(
+                        forecastDay.temp.min
+                      )}°</span>
                     </span>
                   </div>
                 </div>
@@ -52,16 +68,16 @@ function displayForecast() {
             </div>
 					</div>
                 `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
 function getForecast(coordinates) {
-	let apiKey = "774e0d8fffbeeedfdccb46cff718bbcf";
-	let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-	axios.get(apiUrl).then(displayForecast);
-
+  let apiKey = "774e0d8fffbeeedfdccb46cff718bbcf";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeather(response) {
@@ -91,7 +107,7 @@ function displayWeather(response) {
   maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
   minTempElement.innerHTML = Math.round(response.data.main.temp_min);
 
-	getForecast(response.data.coord);
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -136,4 +152,3 @@ let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", displayCelsiusTemperature);
 
 search("Portland");
-
