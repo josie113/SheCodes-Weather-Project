@@ -40,7 +40,7 @@ function displayForecast(response) {
       forecastHTML =
         forecastHTML +
         `
-          <div class="col-4 p-2" id="daily-forecast">
+          <div class="col-12 p-2" id="daily-forecast">
             <div class="daily">
               <section class="tuesday">
                 <div class="row">
