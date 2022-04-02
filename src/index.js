@@ -24,12 +24,16 @@ function formatDate(timestamp) {
 function displayForecast() {
   let forecastElement = document.querySelector("#daily-forecast");
 
-  let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHTML = `<div class="row gx-1 mb-3">`;
+  let days = ["SU", "M", "T", "W", "TH", "F"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `
+          <div class="col-4 p-2" id="daily-forecast">
+            <div class="daily">
+              <section class="tuesday">
+                <div class="row">
                   <div class="col-2 text-left">
                     <span class="tues">${day}</span>
                   </div>
@@ -43,10 +47,21 @@ function displayForecast() {
                       <span class="tues-low" id="tues-low">42°</span>
                     </span>
                   </div>
+                </div>
+              </section>
+            </div>
+					</div>
                 `;
   });
-  forecastHTML = forecastHTML = `</div>`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+	let apiKey = "774e0d8fffbeeedfdccb46cff718bbcf";
+	let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+	axios.get(apiUrl).then(displayForecast);
+
 }
 
 function displayWeather(response) {
@@ -75,6 +90,8 @@ function displayWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   maxTempElement.innerHTML = Math.round(response.data.main.temp_max);
   minTempElement.innerHTML = Math.round(response.data.main.temp_min);
+
+	getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -119,4 +136,4 @@ let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", displayCelsiusTemperature);
 
 search("Portland");
-displayForecast();
+
