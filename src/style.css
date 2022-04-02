@@ -17,9 +17,7 @@
   background-color: #acc6aa;
   border: 1px solid white;
   border-radius: 5px;
-  margin: 0px auto;
-  
-  
+  margin-top: 0px auto;
 }
 h1 {
   font-weight: bold;
@@ -36,9 +34,9 @@ ul {
   line-height: 4.75;
   text-align: left;
   font-weight: normal;
+}
 
-li,
-.week {
+li {
   list-style-type: none;
 }
 
@@ -49,7 +47,7 @@ li,
 .sat,
 .sun {
   font-weight: bold;
-  font-size: x-large;
+  font-size: large;
 }
 .day-2,
 .day-3,
@@ -58,15 +56,5 @@ li,
 .day-6,
 .day-7 {
   font-weight: lighter;
-  font-size: x-large;
-}
-.tuesday:hover,
-.wednesday:hover,
-.thursday:hover,
-.friday:hover,
-.saturday:hover,
-.sunday:hover {
-  background-color: #eeeeee;
-  padding-left: 5px;
-  
+  font-size: large;
 }
