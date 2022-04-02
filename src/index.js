@@ -21,6 +21,34 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#daily-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+                  <div class="col-2 text-left">
+                    <span class="tues">${day}</span>
+                  </div>
+                  <div class="col-10 text-right">
+                    <span class="day-2">
+                      <img
+                        src="http://openweathermap.org/img/wn/50d@2x.png"
+                        alt=""
+                        width="50"
+                      /><span class="tues-high" id="tues-high">48°</span> |
+                      <span class="tues-low" id="tues-low">42°</span>
+                    </span>
+                  </div>
+                `;
+  });
+  forecastHTML = forecastHTML = `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -91,3 +119,4 @@ let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", displayCelsiusTemperature);
 
 search("Portland");
+displayForecast();
